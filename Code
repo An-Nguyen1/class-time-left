@@ -1,0 +1,22 @@
+import datetime
+#schedule = input('what schedule do you want to use')
+dt = datetime.datetime.today()
+def int_t(convert,h_m):
+	p = convert.split(':')
+	pas = int(p[h_m])
+	return pas
+def check_time(period_time):
+	period_time_start = datetime.datetime(dt.year,dt.month,dt.day,int_t(period_time[0],0),int_t(period_time[0],1))
+	period_time_end = datetime.datetime(dt.year,dt.month,dt.day,int_t(period_time[1],0),int_t(period_time[1],1))
+	time_left = period_time_end - dt
+	time_till = period_time_start - dt
+	if time_till <= datetime.timedelta(days=0) <= time_left:
+		print('minutes left: {}'.format(time_left))
+def check_normal(period1,period2,period3,period4,period5,period6,period7,period8,lunch_time):
+	period_times = [period1,period2,period3,period4,period5,period6,period7,period8]
+	for i in range(len(period_times)):
+		check_time(period_times[i])
+	check_time(lunch_time)
+#24 hour time
+#time layout: ['start time','end time']
+check_normal(['07:25','8:07'],['08:11','08:58'],['09:02','09:44'],['09:48','10:30'],['10:34','11:16'],['11:04','11:46'],['12:36','13:18'],['13:22','14:05'],['10:30','11:00'])
