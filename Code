@@ -1,8 +1,4 @@
 import datetime
-#schedule = input('what schedule do you want to use')
-#time that is given to get to classes in minutes
-passing_time = 4
-dt = datetime.datetime.today()
 def give_time(i,period_time):
 	print('period {}: {} - {}'.format(i,period_time[0],period_time[1]))
 def int_t(convert,h_m):
@@ -15,35 +11,4 @@ def check_time(period_time):
 	time_left = period_time_end - dt
 	time_till = period_time_start - dt
 	if time_till <= datetime.timedelta(days=0) <= time_left:
-		print('time left: {} minutes and {} seconds \n'.format(round(time_left.total_seconds()/60),round(time_left.total_seconds()%60)))
-def check_block(period1,period2,period3,period4,lunch_time,day):
-	period_times = [period1,period2,period3,period4,lunch_time]
-	for i in range(len(period_times)-1):
-		check_time(period_times[i])
-	check_time(lunch_time)
-	if day == 2:
-		for i in range(len(period_times)-1):
-			give_time(((i*2)+1),period_times[i])
-		print('lunch time: {} - {}'.format(lunch_time[0],lunch_time[1]))
-	elif day == 3:
-		for i in range(len(period_times)-1):
-			give_time((i+1)*2,period_times[i])
-		print('lunch time: {} - {}'.format(lunch_time[0],lunch_time[1]))
-def check_normal(period1,period2,period3,period4,period5,period6,period7,period8,lunch_time):
-	period_times = [period1,period2,period3,period4,period5,period6,period7,period8]
-	for i in range(len(period_times)-1):
-		check_time(period_times[i])
-	check_time(lunch_time)
-	for i in range(len(period_times)-1):
-		give_time(i+1,period_times[i])
-	print('lunch time: {} - {}'.format(lunch_time[0],lunch_time[1]))
-#24 hour time
-#time layout: ['start time','end time']
-if dt.weekday() == 2:
-	check_block(['7:25','8:55'],['8:59','10:24'],['10:58','12:23'],['12:27','1:52'],['10:25','10:54'],2)
-elif dt.weekday() == 3:
-	check_block(['7:25','8:55'],['8:59','10:24'],['10:58','12:23'],['12:27','1:52'],['10:25','10:54'],3)
-elif dt.weekday() == 5 or 6:
-	print('your in the weekend')
-else:
-	check_normal(['7:25','8:07'],['08:11','08:58'],['09:02','09:44'],['09:48','10:30'],['11:04','11:46'],['11:50','12:32'],['12:36','13:18'],['13:22','14:05'],['10:30','11:00'])
+		return 'time left: {} minutes and {} seconds \n'.format(round(time_left.total_seconds()/60),round(time_left.total_seconds()%60))
