@@ -15,7 +15,7 @@ def check_time(period_time):
 	time_left = period_time_end - dt
 	time_till = period_time_start - dt
 	if time_till <= datetime.timedelta(days=0) <= time_left:
-		return 'time left: {} minutes and {} seconds \n'.format(round(time_left.total_seconds()/60),round(time_left.total_seconds()%60))
+		 return 'time left: {} minutes and {} seconds \n'.format(round(time_left.total_seconds()/60),round(time_left.total_seconds()%60))
 def check_block(period_times,day):
 	lunch_time = period_times[-1]
 	for i in range(len(period_times)-1):
@@ -33,9 +33,11 @@ def check_block(period_times,day):
 def time_left(period_times):
 	lunch_time = period_times[-1]
 	for i in range(len(period_times)-1):
-		check_time(period_times[i])
+			return check_time(period_times[i])
 #24 hour time
 #time layout: [['start time','end time'],['start time','end time']]
+#example
+#checks if it a wensday or thursaday
 if dt.weekday() == 2:
 	check_block([['7:25','8:55'],['8:59','10:24'],['10:58','12:23'],['12:27','20:52'],['10:25','10:54']],2)
 elif dt.weekday() == 3:
